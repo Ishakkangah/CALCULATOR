@@ -1,0 +1,111 @@
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+   font-size: 12px;
+   font-weight: bold;
+}
+
+body {
+   background: linear-gradient(to right, red, blue, green);
+   margin: 0;
+   padding: 0;
+}
+
+.container {
+   margin: auto;
+   border: 1px solid;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 10px solid #ccc;
+}
+
+.calculator-grid {
+   display: grid;
+   grid-template-columns: repeat(4, 80px);
+   grid-template-rows: minmax(120px, auto) repeat(5, 60px);
+   justify-content: center;
+   background-color: #ccc;
+   border-radius: 10px;
+   border: 3px solid #ccc;
+   box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.5);
+   cursor: pointer;
+}
+
+.calculator-grid .output {
+   grid-column: 1/-1;
+   background-color: #222;
+   color: #ccc;
+   border: 4px solid #ccc;
+   word-break: break-all;
+   word-wrap: break-word;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: end;
+   padding: 10px;
+   border-radius: 10px;
+   position: relative;
+   transition: 0.3s;
+   overflow: hidden;
+   z-index: 1;
+}
+
+.calculator-grid .output::before {
+   content: "";
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 0;
+   height: 100%;
+   background-color: rgb(246, 238, 238);
+   transition: 0.3s;
+   z-index: -1;
+}
+
+.calculator-grid .output:hover .current-operand,
+.calculator-grid .output:hover .previous-operand {
+   color: black;
+}
+
+.calculator-grid .output:hover::before {
+   width: 100%;
+}
+
+.previous-operand,
+.current-operand {
+   font-size: 1.6em;
+   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.current-operand {
+   font-size: 2em;
+}
+
+.span-two {
+   grid-column: span 2;
+}
+
+.calculator-grid > span {
+   background-color: #ddd;
+   border: 4px solid #ccc;
+   text-align: center;
+   line-height: 60px;
+   font-size: 1.5em;
+   border-radius: 10px;
+   transition: 0.3s;
+}
+
+.calculator-grid > span:hover {
+   color: #333;
+   background-color: #fff;
+}
+
+.calculator-grid > span:active {
+   color: #ddd;
+   background-color: rgb(97, 180, 228);
+   transform: scale(1.1);
+}
